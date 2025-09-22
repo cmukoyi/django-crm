@@ -10,18 +10,30 @@ python manage.py collectstatic --no-input
 echo "Running migrations..."
 python manage.py migrate
 
-echo "Creating admin user..."
+echo "Creating/updating admin user..."
 python manage.py shell -c "
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import check_password
+
 username = 'admin'
 password = 'admin123'
 email = 'admin@visightsolutions.co.za'
 
-if User.objects.filter(username=username).exists():
-    print(f'User {username} already exists')
-else:
+try:
+    user = User.objects.get(username=username)
+    print(f'User {username} exists - checking password...')
+    
+    if check_password(password, user.password):
+        print('Password is correct')
+    else:
+        print('Password is wrong - updating it...')
+        user.set_password(password)
+        user.save()
+        print('Password updated successfully')
+        
+except User.DoesNotExist:
     user = User.objects.create_superuser(username, email, password)
-    print(f'Created superuser: {username} with password: {password}')
+    print(f'Created new superuser: {username}')
 
 print('=== LOGIN CREDENTIALS ===')
 print(f'Username: {username}')
