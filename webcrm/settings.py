@@ -10,6 +10,29 @@ from tasks.settings import *        # NOQA
 from voip.settings import *         # NOQA
 from .datetime_settings import *    # NOQA
 
+
+# Temporarily enable DEBUG to see the actual error
+DEBUG = True
+
+# Add this logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+        },
+    },
+}
 # ---- Django settings ---- #
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
