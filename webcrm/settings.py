@@ -26,18 +26,12 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Database
 DATABASES = {
     'default': {
-        # for MySQl
-        'ENGINE': 'django.db.backends.mysql',
-        'PORT': '3306',
-
-        # for PostgreSQL
-        # "ENGINE": "django.db.backends.postgresql",
-        # 'PORT': '5432',   # for PostgreSQL
-
-        'NAME': 'crm_db',
-        'USER': 'crm_user',
-        'PASSWORD': 'crmpass',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'webcrm',
+        'USER': 'webcrm_user',
+        'PASSWORD': 'COyk1kOPgJinrKBkALqtTeMPiD7woy6Q',
+        'HOST': 'dpg-d386msemcj7s7383veq0-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
