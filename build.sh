@@ -7,6 +7,9 @@ pip install -r requirements.txt
 echo "Collecting static files..."
 python manage.py collectstatic --no-input
 
+echo "Running setupdata (includes migrations, fixtures, and superuser)..."
+python manage.py setupdata
+
 echo "Running migrations..."
 python manage.py migrate
 
