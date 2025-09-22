@@ -133,8 +133,7 @@ class DealAdmin(CrmModelAdmin):
     ]
 
     # -- ModelAdmin methods -- #
-
-   def _create_formsets(self, request, obj, change):
+def _create_formsets(self, request, obj, change):
     formsets, inline_instances = super()._create_formsets(request, obj, change)
 
     # Only run when editing an existing Deal (not when adding a new one)
